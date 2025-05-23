@@ -1,0 +1,32 @@
+{
+    "name": "npm-packages",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier \"**/*.{vue,js,jsx,ts,tsx,json,css,scss,less,md,mdx,yaml,yml,mts,html}\" --write",
+        "docs:dev": "pnpm --filter docs docs:dev",
+        "docs:build": "pnpm --filter docs docs:build",
+        "build:trans-coord": "pnpm --filter trans-coord build",
+        "build:simple-map": "pnpm --filter simple-map build",
+        "build": "pnpm build:trans-coord && pnpm build:simple-map"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.11.0",
+    "dependencies": {
+        "@turf/turf": "^7.2.0",
+        "lodash-es": "^4.17.21",
+        "ol": "^10.5.0"
+    },
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.12",
+        "prettier": "^3.5.3",
+        "rollup-plugin-visualizer": "^5.14.0",
+        "vite": "^6.3.5",
+        "vite-plugin-dts": "^4.5.4",
+        "vitepress": "^1.6.3"
+    }
+}

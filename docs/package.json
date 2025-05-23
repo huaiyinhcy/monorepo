@@ -1,0 +1,27 @@
+{
+    "name": "docs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "docs:dev": "vitepress dev",
+        "docs:build": "vitepress build",
+        "docs:preview": "vitepress preview"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.11.0",
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.3.1",
+        "@huaiyinhcy/simple-map": "workspace:*",
+        "@huaiyinhcy/trans-coord": "workspace:*",
+        "element-plus": "^2.9.10",
+        "vue": "^3.5.13"
+    },
+    "devDependencies": {
+        "unocss": "^66.1.2",
+        "vitepress-demo-plugin": "^1.4.2"
+    }
+}
