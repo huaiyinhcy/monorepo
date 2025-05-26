@@ -11,7 +11,6 @@ import 'ol/ol.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 
-import { tdt_key } from '../../config.json';
 import {
     borderPreset,
     clipLayerByVectorLayer,
@@ -33,7 +32,7 @@ const { adcode } = toRefs(props);
 
 const refMap = ref();
 
-const your_tdt_key = tdt_key;
+const your_tdt_key = '6547dabbe288ddc38c79efd5daa59019';
 
 let map = null;
 
