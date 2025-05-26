@@ -3,7 +3,7 @@ import { GeoJSON } from 'ol/format';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import type { GetOdLayer } from './types';
-import { Feature } from 'ol';
+import type { Feature } from 'ol';
 import { borderPreset } from '../presets';
 
 // @ts-ignore

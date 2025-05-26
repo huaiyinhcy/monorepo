@@ -1,6 +1,6 @@
 import { type Extent, getTopLeft, getWidth } from 'ol/extent';
 import WMTSTileGrid from 'ol/tilegrid/WMTS';
-import { get, Projection } from 'ol/proj';
+import { get, type Projection } from 'ol/proj';
 import type { Options as WMTSSourceOptions } from 'ol/source/WMTS';
 import TileLayer from 'ol/layer/Tile';
 import { WMTS } from 'ol/source';
