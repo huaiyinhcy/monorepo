@@ -16,13 +16,13 @@ export default defineConfig({
         },
         rollupOptions: {
             external: [/^ol($|\/.*)/, /^@turf($|\/.*)/, /^lodash($|\/.*)/],
-            output:{
+            output: {
                 globals: {
                     ol: 'ol',
                     '@turf/turf': 'turf',
                     lodash: '_',
-                }
-            }
+                },
+            },
         },
     },
     resolve: {

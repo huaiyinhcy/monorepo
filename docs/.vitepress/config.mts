@@ -24,8 +24,8 @@ export default defineConfig({
     },
     vite: {
         plugins: [UnoCSS()],
-        server:{
+        server: {
             host: '0.0.0.0',
-        }
+        },
     },
 });

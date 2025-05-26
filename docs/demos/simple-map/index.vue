@@ -1,36 +1,49 @@
 <template>
-    <div ref="refMap" class="map" />
+    <div ref="refMap" class="map">
+        <slot />
+    </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, toRefs } from 'vue';
 
 import 'ol/ol.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 
-import {tdt_key} from '../../config.json'
+import { tdt_key } from '../../config.json';
 import {
     borderPreset,
     clipLayerByVectorLayer,
-    filterLayerByFunction,
     filterLayerByOptions,
     filterPresets,
     getDistrictLayer,
+    getOdLayer,
     getTdtLayer,
 } from '@huaiyinhcy/simple-map';
+
+const props = defineProps({
+    adcode: {
+        type: Number,
+        default: 330000,
+    },
+});
+
+const { adcode } = toRefs(props);
 
 const refMap = ref();
 
 const your_tdt_key = tdt_key;
 
-const adcode = 330000;
+let map = null;
 
 const init = async () => {
     // 创建地图
-    const map = new Map({
+    map = new Map({
         target: refMap.value,
-        view: new View({}),
+        view: new View({
+            projection: 'EPSG:3857',
+        }),
     });
 
     /**
@@ -44,16 +57,19 @@ const init = async () => {
      * */
     // 获取天地图影像底图
     const imgLayer = getTdtLayer({ tdtKey: your_tdt_key, layerType: 'img' });
+    imgLayer.setZIndex(-98);
 
     // 获取天地图影像注记
     const labelLayer = getTdtLayer({ tdtKey: your_tdt_key, layerType: 'cia' });
+    labelLayer.setZIndex(-97);
 
     // 获取行政区边界
     const clipLayer = await getDistrictLayer({
-        adcode,
+        adcode: adcode.value,
         // 立体外边界
         style: borderPreset.fake3dBorder({ map, color: '#2f507e', offset: [3, 10] }),
     });
+    clipLayer.setZIndex(-99);
 
     // 裁切 影响底图
     clipLayerByVectorLayer({ layerToBeClipped: imgLayer, clipLayer });
@@ -81,10 +97,11 @@ const init = async () => {
 
     // 获取行政区边界（分割）
     const districtLayer = await getDistrictLayer({
-        adcode,
+        adcode: adcode.value,
         split: true,
         style: borderPreset.default({ color: '#2f507e' }),
     });
+    districtLayer.setZIndex(-96);
 
     // 添加图层 注意顺序
     map.addLayer(clipLayer);
@@ -97,10 +114,13 @@ const init = async () => {
 };
 
 onMounted(init);
+
+defineExpose({ map: () => map });
 </script>
 
 <style scoped>
 .map {
     height: 300px;
+    position: relative;
 }
 </style>

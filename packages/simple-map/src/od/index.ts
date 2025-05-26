@@ -2,9 +2,9 @@ import * as turf from '@turf/turf';
 import { GeoJSON } from 'ol/format';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import { Feature } from 'ol';
-import { Style } from 'ol/style';
 import type { GetOdLayer } from './types';
+import { Feature } from 'ol';
+import { borderPreset } from '../presets';
 
 // @ts-ignore
 const findThirdPointInBezierSpline = (from, to, curvature = 15) => {
@@ -39,38 +39,32 @@ const findThirdPointInBezierSpline = (from, to, curvature = 15) => {
 };
 
 // @ts-ignore
-const drawBezierSpline = (from, to, curvature = 15) => {
+const drawBezierSpline = (from, to, curvature = 15, properties = {}) => {
     const line = turf.lineString([from, findThirdPointInBezierSpline(from, to, curvature)[1], to]);
-    return turf.bezierSpline(line, { sharpness: 1 });
+    const geo = turf.bezierSpline(line);
+    geo.properties = properties;
+    return geo;
 };
 
 export const getOdLayer: GetOdLayer = params => {
-    const { data, curvature } = params;
-
-    const features = data.map(item => {
-        let { from, to } = item;
-        const feature = new GeoJSON().readFeature(drawBezierSpline(from, to, curvature));
-        (feature as any).values_.item = item;
-        return feature as Feature;
-    });
+    const {
+        data,
+        curvature,
+        style = borderPreset.default(),
+        dataProjection = 'EPSG:4326',
+        featureProjection = 'EPSG:3857',
+    } = params;
 
     return new VectorLayer({
-        source: new VectorSource({ features }),
-        style: (() => {
-            return new Style({
-                renderer: (pixelCoordinate, e) => {
-                    const ctx: CanvasRenderingContext2D = e.context;
-                    if (!ctx) throw new Error('No CanvasRenderingContext2D available');
-                    ctx.strokeStyle = 'black';
-                    ctx.lineWidth = 5;
-                    ctx.beginPath();
-                    for (let i = 0; i < pixelCoordinate.length; i++) {
-                        const [x, y] = pixelCoordinate[i] as any;
-                        ctx.lineTo(x, y);
-                    }
-                    ctx.stroke();
-                },
-            });
-        })(),
+        source: new VectorSource({
+            features: data.map(item => {
+                let { from, to } = item;
+                return new GeoJSON({
+                    dataProjection,
+                    featureProjection,
+                }).readFeature(drawBezierSpline(from, to, curvature, item)) as Feature;
+            }),
+        }),
+        style,
     });
 };

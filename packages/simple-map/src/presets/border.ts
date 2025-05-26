@@ -26,7 +26,7 @@ const drawBorder = ({ ctx, coordinates, offsetX, offsetY }: any) => {
 
 export const borderPreset: BorderPresets = {
     default: (opts = {}) => {
-        const { color = 'black', width = 1 } = opts;
+        const { color = 'red', width = 1 } = opts;
         return new Style({
             stroke: new Stroke({
                 color,
@@ -35,7 +35,7 @@ export const borderPreset: BorderPresets = {
         });
     },
     fake3dBorder: params => {
-        const { map, color = 'black', offset = [5, 5] } = params;
+        const { map, color = 'red', offset = [5, 5] } = params;
         const isMerc = map.getView().getProjection().getCode() === 'EPSG:3857';
         return new Style({
             renderer: (pixelCoordinates, e) => {

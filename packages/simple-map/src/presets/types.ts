@@ -10,3 +10,7 @@ export interface BorderPresets {
 export interface FilterPresets {
     blue: () => FilterOptionItem[];
 }
+
+export interface LegendPresets {
+    morandi: string[];
+}

@@ -10,7 +10,7 @@
 npm install @huaiyinhcy/trans-coord
 ```
 
-##  最小示例
+## 最小示例
 
 ```javascript
 import { gcj02 } from '@huaiyinhcy/trans-coord';
@@ -19,5 +19,3 @@ const gcj02Coord = [116.4, 39.92];
 
 const bd09Coord = gcj02.toBd09(gcj02Coord);
 ```
-
-

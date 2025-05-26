@@ -25,6 +25,7 @@
         "@types/lodash-es": "^4.17.12",
         "prettier": "^3.5.3",
         "rollup-plugin-visualizer": "^5.14.0",
+        "typescript": "~5.8.3",
         "vite": "^6.3.5",
         "vite-plugin-dts": "^4.5.4",
         "vitepress": "^1.6.3"

@@ -1,7 +1,7 @@
 import type { CreateLegend } from './types';
-import { presetsColors, presetsHandleLegends } from './presets';
+import { legendPresets } from '../presets/legend';
 
-export const createGradient = (colors = presetsColors.morandi) => {
+export const createGradient = (colors = legendPresets.morandi) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error("Can't create gradient");
@@ -19,6 +19,22 @@ export const createGradient = (colors = presetsColors.morandi) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     return canvas;
+};
+
+export const getColorFromGradient = (
+    canvas: HTMLCanvasElement,
+    index: number,
+    gradingNum: number
+) => {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error("Can't get gradient");
+    const imageData = ctx.getImageData(
+        ((canvas.width - 1) * index) / (gradingNum - 1),
+        canvas.height / 2,
+        1,
+        1
+    );
+    return `rgba(${imageData.data[0]}, ${imageData.data[1]}, ${imageData.data[2]}, ${imageData.data[3]})`;
 };
 
 const equalInterval = (data: any, n: number) => {
@@ -60,34 +76,33 @@ export const createLegend: CreateLegend = params => {
         data,
         gradingMethod = 'equalInterval',
         gradingNum = 5,
-        handleLegends = presetsHandleLegends.default,
+        colors = legendPresets.morandi,
     } = params;
-    const values = data.map(item => item.value);
     let breaks;
     switch (gradingMethod) {
         case 'equalInterval':
-            breaks = equalInterval(values, gradingNum);
+            breaks = equalInterval(data, gradingNum);
             break;
         case 'quantile':
-            breaks = quantile(values, gradingNum);
+            breaks = quantile(data, gradingNum);
             break;
         case 'stdDev':
-            breaks = standardDeviation(values, gradingNum);
+            breaks = standardDeviation(data, gradingNum);
             break;
         default:
             throw new Error(`Can't create legend: ${gradingMethod}`);
     }
     breaks[breaks.length - 1] = breaks[breaks.length - 1] + 1; // 确保最大值包含在范围内
 
+    const canvas = createGradient(colors);
+
     const legends = [];
     for (let i = 0; i < breaks.length - 1; i++) {
         legends.push({
             min: breaks[i],
             max: breaks[i + 1],
+            color: getColorFromGradient(canvas, i, gradingNum),
         });
     }
-
-    return handleLegends({ legends });
+    return legends;
 };
-
-export * from './presets';

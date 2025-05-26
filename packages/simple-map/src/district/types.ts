@@ -6,7 +6,7 @@ import { GeoJSON } from 'ol/format';
 /**
  * 行政区编号
  */
-export type Adcode = number | string;
+export type Adcode = number;
 
 /**
  *  获取行政区划的geojson数据
@@ -15,7 +15,10 @@ export type Adcode = number | string;
  *  @param params.split 是否打散到下一级
  *  @return geojson数据
  */
-export type GetDistrictGeoJSON = (params: { adcode: Adcode; split?: Boolean }) => Promise<GeoJSON>;
+export type GetDistrictGeoJSON = (params: {
+    adcode: Adcode;
+    split?: Boolean;
+}) => Promise<GeoJSON | any>;
 
 export type GetDistrictLayer = (params: {
     adcode: Adcode;

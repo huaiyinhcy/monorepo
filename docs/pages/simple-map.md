@@ -16,6 +16,6 @@ OpenLayers 常用方法封装，例如：行政区边界、底图裁切、底图
 
 <demo vue="../demos/simple-map/index.vue" />
 
-## od飞线图
+## od飞线图 与 图例
 
 <demo vue="../demos/simple-map/od-map.vue" />

@@ -79,9 +79,9 @@ export const filterLayerByOptions: FilterLayerByOptions = params => {
     filterLayerByFunction({ layer, filterFunction });
 };
 
-export const splitMultiPolygonToPolygons: SplitDistrictLayerByFunction = geoJson => {
+export const splitMultiPolygonToPolygons: SplitDistrictLayerByFunction = geoJSON => {
     // 检查输入是否为FeatureCollection
-    if (geoJson.type !== 'FeatureCollection') {
+    if (geoJSON.type !== 'FeatureCollection') {
         throw new Error('Input must be a FeatureCollection');
     }
 
@@ -89,7 +89,7 @@ export const splitMultiPolygonToPolygons: SplitDistrictLayerByFunction = geoJson
     const newFeatures: any[] = [];
 
     // 遍历每个Feature
-    geoJson.features.forEach((feature: any) => {
+    geoJSON.features.forEach((feature: any) => {
         // 如果Feature的geometry是MultiPolygon
         if (feature.geometry.type === 'MultiPolygon') {
             // 遍历MultiPolygon的每个Polygon
