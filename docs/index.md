@@ -7,9 +7,6 @@ hero:
     text: some useful tools
     actions:
         - theme: brand
-          text: About
-          link: /pages/about
-        - theme: alt
           text: Markdown Examples
           link: /pages/markdown-examples
         - theme: alt

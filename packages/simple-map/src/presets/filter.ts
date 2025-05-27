@@ -1,7 +1,7 @@
 import type { FilterPresets } from './types';
 
 export const filterPresets: FilterPresets = {
-    blue: () => [
+    blue: [
         {
             type: 'grayscale',
             value: '98%',

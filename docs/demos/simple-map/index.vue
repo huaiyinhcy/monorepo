@@ -66,7 +66,7 @@ const init = async () => {
     const clipLayer = await getDistrictLayer({
         adcode: adcode.value,
         // 立体外边界
-        style: borderPreset.fake3dBorder({ map, color: '#2f507e', offset: [3, 10] }),
+        style: borderPreset.fake3dBorder({ map, color: '#2f507e', offset: [3, 15] }),
     });
     clipLayer.setZIndex(-99);
 
@@ -77,7 +77,7 @@ const init = async () => {
     clipLayerByVectorLayer({ layerToBeClipped: labelLayer, clipLayer });
 
     // 添加 地图滤镜
-    filterLayerByOptions({ layer: imgLayer, filterOptions: filterPresets.blue() });
+    filterLayerByOptions({ layer: imgLayer, filterOptions: filterPresets.blue });
 
     // 你也可以使用更加灵活的方式实现底图换色功能
     /*filterLayerByFunction({

@@ -69,7 +69,7 @@ export const filterLayerByFunction: FilterLayerByFunction = params => {
 };
 
 export const filterLayerByOptions: FilterLayerByOptions = params => {
-    const { layer, filterOptions = filterPresets.blue() } = params;
+    const { layer, filterOptions = filterPresets.blue } = params;
     const filterFunction = (context: CanvasRenderingContext2D) => {
         context.filter = filterOptions
             .map(({ type, value }: { type: string; value: string }) => `${type}(${value})`)

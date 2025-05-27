@@ -8,7 +8,7 @@ export interface BorderPresets {
 }
 
 export interface FilterPresets {
-    blue: () => FilterOptionItem[];
+    blue: FilterOptionItem[];
 }
 
 export interface LegendPresets {
