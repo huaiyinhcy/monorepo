@@ -12,7 +12,7 @@ export default defineConfig({
             entry: 'src/index.ts',
             fileName: 'index',
             name: 'simpleMap',
-            formats: ['es'],
+            formats: ['es','cjs'],
         },
         rollupOptions: {
             external: [/^ol($|\/.*)/, /^@turf($|\/.*)/, /^lodash($|\/.*)/],
