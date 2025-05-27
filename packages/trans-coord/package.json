@@ -12,6 +12,7 @@
     "author": "huaiyinhcy",
     "repository": "https://github.com/huaiyinhcy/npm-packages",
     "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/trans-coord.html",
+    "private": false,
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
