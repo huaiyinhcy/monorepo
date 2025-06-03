@@ -1,7 +1,5 @@
 <template>
-    <div ref="refMap" class="map">
-        <slot />
-    </div>
+    <div ref="refMap" class="map"/>
 </template>
 
 <script setup>
@@ -17,22 +15,12 @@ import {
     filterLayerByOptions,
     filterPresets,
     getDistrictLayer,
-    getOdLayer,
     getTdtLayer,
 } from '@huaiyinhcy/simple-map';
 
-const props = defineProps({
-    adcode: {
-        type: Number,
-        default: 330000,
-    },
-});
-
-const { adcode } = toRefs(props);
+const adcode = 330000;
 
 const refMap = ref();
-
-const your_tdt_key = '6547dabbe288ddc38c79efd5daa59019';
 
 let map = null;
 
@@ -55,16 +43,16 @@ const init = async () => {
      * ibo: 全球境界
      * */
     // 获取天地图影像底图
-    const imgLayer = getTdtLayer({ tdtKey: your_tdt_key, layerType: 'img' });
+    const imgLayer = getTdtLayer({ tdtKey: import.meta.env.VITE_TDT_KEY, layerType: 'img' });
     imgLayer.setZIndex(-98);
 
     // 获取天地图影像注记
-    const labelLayer = getTdtLayer({ tdtKey: your_tdt_key, layerType: 'cia' });
+    const labelLayer = getTdtLayer({ tdtKey: import.meta.env.VITE_TDT_KEY, layerType: 'cia' });
     labelLayer.setZIndex(-97);
 
     // 获取行政区边界
     const clipLayer = await getDistrictLayer({
-        adcode: adcode.value,
+        adcode,
         // 立体外边界
         style: borderPreset.fake3dBorder({ map, color: '#2f507e', offset: [3, 15] }),
     });
@@ -96,7 +84,7 @@ const init = async () => {
 
     // 获取行政区边界（分割）
     const districtLayer = await getDistrictLayer({
-        adcode: adcode.value,
+        adcode,
         split: true,
         style: borderPreset.default({ color: '#2f507e' }),
     });
@@ -113,8 +101,6 @@ const init = async () => {
 };
 
 onMounted(init);
-
-defineExpose({ map: () => map });
 </script>
 
 <style scoped>

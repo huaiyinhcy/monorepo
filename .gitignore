@@ -26,3 +26,4 @@ dist-ssr
 /docs/.vitepress/cache
 packages/simple-map/stats.html
 /docs/config.json
+docs/.env.development

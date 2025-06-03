@@ -1,20 +1,69 @@
 <template>
-    <simple-map ref="refSimpleMap" :adcode="100000">
+    <div ref="refMap" class="map">
         <div class="absolute left-0 bottom-0 z-5 text-xs">
             <div class="flex items-center gap-xs" v-for="item in legend">
                 <div class="h-2.5 w-2.5 rounded-full" :style="{ background: item.color }"></div>
                 <div class="label">{{ item.min }} - {{ item.max }}</div>
             </div>
         </div>
-    </simple-map>
+    </div>
 </template>
 
 <script setup>
-import SimpleMap from './index.vue';
 import { onMounted, ref } from 'vue';
-import { borderPreset, createLegend, getOdLayer } from '@huaiyinhcy/simple-map';
+import {
+    borderPreset,
+    createLegend,
+    filterLayerByOptions,
+    filterPresets,
+    getOdLayer,
+    useMap,
+} from '@huaiyinhcy/simple-map';
 
-const refSimpleMap = ref();
+const refMap = ref();
+
+/**
+ * 就是simple-map中的内容
+ */
+const init = async () => {
+    /**
+     * 快速使用 useMap
+     * @param params
+     * @param params.tdtKey 天地图API Key
+     * @param params.target 目标容器
+     * @param params.proj 地图坐标
+     * @param params.adcode 行政区划代码
+     * @param params.basicLayerType 基础图层类型
+     * @param params.label 是否显示注记图层 默认显示
+     * @param params.clip 是否裁切 默认裁切
+     * @param params.clipBorder 裁切边界样式 默认为灰色边框
+     * @param params.zoom 缩放级别 默认13 如果裁切则自适应
+     * @param params.center 地图中心点 默认[104.06, 30.67] 如果裁切则自适应
+     */
+    const map = await useMap({
+        tdtKey: import.meta.env.VITE_TDT_KEY,
+        adcode: 100000,
+        target: refMap.value,
+        splitBorder: borderPreset.default({ color: '#2f507e' }),
+    });
+
+    const basicLayer = map
+        .getLayers()
+        .getArray()
+        .find(layer => layer.get('name') === 'basicLayer');
+
+    filterLayerByOptions({ layer: basicLayer, filterOptions: filterPresets.blue });
+
+    const clipLayer = map
+        .getLayers()
+        .getArray()
+        .find(layer => layer.get('name') === 'clipLayer');
+
+    // 立体边界需要传入map实例进行计算 所以在初始化之后单独设置
+    clipLayer.setStyle(borderPreset.fake3dBorder({ map, color: '#2f507e', offset: [3, 15] }));
+
+    return map;
+};
 
 const coordinates = {
     北京: [116.407526, 39.90403],
@@ -113,11 +162,11 @@ const legend = createLegend({
     // colors: [],
 });
 
-onMounted(() => {
-    const map = refSimpleMap.value.map();
+onMounted(async () => {
+    const map = await init();
 
     const odLayer = getOdLayer({
-        // data: [from:[120,30],to:[121,31],value:10]
+        // data示例: [from:[120,30],to:[121,31],value:10]
         data,
         style: feature => {
             // 根据value值设置线颜色
@@ -130,3 +179,10 @@ onMounted(() => {
     map.addLayer(odLayer);
 });
 </script>
+
+<style scoped>
+.map {
+    height: 300px;
+    position: relative;
+}
+</style>

@@ -2,11 +2,15 @@ import { Fill, Style } from 'ol/style';
 import { getVectorContext } from 'ol/render';
 import { filterPresets } from '../presets';
 import type {
-    FilterLayerByOptions,
+    ClipLayerByVectorLayer,
     FilterLayerByFunction,
+    FilterLayerByOptions,
     SplitDistrictLayerByFunction,
+    UseMap,
 } from './types';
-import type { ClipLayerByVectorLayer } from './types';
+import { Map, View } from 'ol';
+import { getTdtLayer } from '../tdt';
+import { getDistrictLayer } from '../district';
 
 export const clipLayerByVectorLayer: ClipLayerByVectorLayer = params => {
     const { layerToBeClipped, clipLayer } = params;
@@ -121,4 +125,84 @@ export const splitMultiPolygonToPolygons: SplitDistrictLayerByFunction = geoJSON
         type: 'FeatureCollection',
         features: newFeatures,
     };
+};
+
+export const useMap: UseMap = async params => {
+    const {
+        tdtKey,
+        target,
+        adcode = 100000,
+        proj = 'EPSG:3857',
+        basicLayerType = 'img',
+        label = true,
+        clip = true,
+        clipBorder,
+        split = true,
+        splitBorder,
+        center,
+        zoom,
+    } = params;
+
+    // 创建地图
+    const map = new Map({
+        target,
+        view: new View({
+            projection: proj,
+        }),
+    });
+
+    let clipLayer;
+    if (clip) {
+        // 获取行政区边界
+        clipLayer = await getDistrictLayer({
+            adcode,
+            // 立体外边界
+            style: clipBorder,
+            proj,
+        });
+        clipLayer.setZIndex(-99);
+        clipLayer.set('name', 'clipLayer');
+        map.addLayer(clipLayer);
+    }
+
+    // 获取天地图影像底图
+    const basicLayer = getTdtLayer({ tdtKey: tdtKey, layerType: basicLayerType, proj });
+    basicLayer.setZIndex(-98);
+    basicLayer.set('name', 'basicLayer');
+    map.addLayer(basicLayer);
+
+    // 裁切 影响底图
+    clipLayer && clipLayerByVectorLayer({ layerToBeClipped: basicLayer, clipLayer });
+
+    if (label) {
+        // 获取天地图影像注记
+        const labelLayer = getTdtLayer({ tdtKey: tdtKey, layerType: 'cia', proj });
+        labelLayer.setZIndex(-97);
+        labelLayer.set('name', 'labelLayer');
+
+        // 裁切 影像注记
+        clipLayer && clipLayerByVectorLayer({ layerToBeClipped: labelLayer, clipLayer });
+        map.addLayer(labelLayer);
+    }
+
+    if (split) {
+        // 获取行政区边界（分割）
+        const districtLayer = await getDistrictLayer({
+            adcode,
+            split: true,
+            style: splitBorder,
+        });
+        districtLayer.setZIndex(-96);
+        map.addLayer(districtLayer);
+    }
+
+    // 设置视角
+    clipLayer &&
+        // @ts-ignore
+        map.getView().fit(clipLayer.getSource().getExtent(), { padding: [20, 20, 20, 20] });
+
+    center && map.getView().setCenter(center);
+    zoom && map.getView().setZoom(zoom);
+
+    return map;
 };

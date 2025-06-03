@@ -1,7 +1,7 @@
 import { Style } from 'ol/style';
-import type { Proj } from '../types';
 import VectorLayer from 'ol/layer/Vector';
 import { GeoJSON } from 'ol/format';
+import type { ProjectionLike } from 'ol/proj';
 
 /**
  * 行政区编号
@@ -23,6 +23,6 @@ export type GetDistrictGeoJSON = (params: {
 export type GetDistrictLayer = (params: {
     adcode: Adcode;
     split?: Boolean;
-    proj?: Proj;
+    proj?: ProjectionLike;
     style?: Style;
 }) => Promise<VectorLayer>;

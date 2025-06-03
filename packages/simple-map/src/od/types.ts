@@ -1,7 +1,7 @@
 import type { Coordinate } from 'ol/coordinate';
 import VectorLayer from 'ol/layer/Vector';
 import type { Style } from 'ol/style';
-import type { Proj } from '../types';
+import type { ProjectionLike } from 'ol/proj';
 
 /**
  * 定义 odItem 类型，表示起点、终点和相关数值的组合。
@@ -27,9 +27,9 @@ export type GetOdLayer = (params: {
     /**
      * 坐标系 默认 EPSG:4326
      */
-    dataProjection?: Proj;
+    dataProjection?: ProjectionLike;
     /**
      * 要素坐标系 默认 EPSG:3857
      */
-    featureProjection?: Proj;
+    featureProjection?: ProjectionLike;
 }) => VectorLayer;

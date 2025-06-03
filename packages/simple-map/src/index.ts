@@ -6,5 +6,3 @@ export * from './tdt';
 export * from './district';
 export * from './od';
 export * from './legend';
-
-export * from './types';

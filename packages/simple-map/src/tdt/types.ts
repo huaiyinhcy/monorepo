@@ -1,7 +1,7 @@
 import type { Extent } from 'ol/extent';
 import WMTSTileGrid from 'ol/tilegrid/WMTS';
 import TileLayer from 'ol/layer/Tile';
-import type { Proj } from '../types';
+import type { ProjectionLike } from 'ol/proj';
 
 /**
  * valid matrix sets
@@ -45,5 +45,5 @@ export type GetTileGrid = (params: { projectionExtent: Extent }) => WMTSTileGrid
 export type GetTdtLayer = (params: {
     tdtKey: string;
     layerType: LayerType;
-    proj?: Proj;
+    proj?: ProjectionLike;
 }) => TileLayer;
