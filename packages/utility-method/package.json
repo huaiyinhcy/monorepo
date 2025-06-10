@@ -1,0 +1,26 @@
+{
+    "version": "2.0.1",
+    "name": "@huaiyinhcy/utility-method",
+    "description": "实用工具集",
+    "keywords": [],
+    "author": "huaiyinhcy",
+    "repository": "https://github.com/huaiyinhcy/npm-packages",
+    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/utility-method.html",
+    "private": false,
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "type": "module",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    }
+}

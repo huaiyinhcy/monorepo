@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [dts({ include: ['src'] })],
+    plugins: [dts({ include: ['src'] }), visualizer()],
     build: {
         // 打包后的文件输出目录
         emptyOutDir: true,
@@ -24,5 +25,8 @@ export default defineConfig({
                 },
             },
         },
+    },
+    resolve: {
+        extensions: ['.ts', '.js'],
     },
 });

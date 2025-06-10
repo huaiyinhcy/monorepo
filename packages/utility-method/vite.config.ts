@@ -6,13 +6,14 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
     plugins: [dts({ include: ['src'] }), visualizer()],
     build: {
+        // 打包后的文件输出目录
         emptyOutDir: true,
         target: 'es2015',
         lib: {
             entry: 'src/index.ts',
             fileName: 'index',
-            name: 'simpleMap',
-            formats: ['es'],
+            name: 'utilityMethod',
+            formats: ['umd', 'es', 'cjs'],
         },
         rollupOptions: {
             external: [/^ol($|\/.*)/, /^@turf($|\/.*)/, /^lodash($|\/.*)/],

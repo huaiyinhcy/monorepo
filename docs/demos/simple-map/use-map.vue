@@ -1,5 +1,5 @@
 <template>
-    <div ref="refMap" class="map"/>
+    <div ref="refMap" class="map" />
 </template>
 
 <script setup>

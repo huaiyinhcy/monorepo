@@ -64,15 +64,6 @@ importers:
                 specifier: ^1.4.2
                 version: 1.4.2(shiki@2.5.0)(vitepress@1.6.3(@algolia/client-search@5.25.0)(async-validator@4.2.5)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.14(typescript@5.8.3))
 
-    packages/geo-json:
-        devDependencies:
-            typescript:
-                specifier: ~5.8.3
-                version: 5.8.3
-            vite:
-                specifier: ^6.3.5
-                version: 6.3.5(jiti@2.4.2)
-
     packages/simple-map:
         dependencies:
             '@turf/turf':
@@ -90,6 +81,15 @@ importers:
             '@turf/turf':
                 specifier: ^7.2.0
                 version: 7.2.0
+
+    packages/utility-method:
+        devDependencies:
+            typescript:
+                specifier: ~5.8.3
+                version: 5.8.3
+            vite:
+                specifier: ^6.3.5
+                version: 6.3.5(jiti@2.4.2)
 
 packages:
     '@algolia/autocomplete-core@1.17.7':
