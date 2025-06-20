@@ -9,10 +9,12 @@
         "gis"
     ],
     "dependencies": {
-        "@huaiyinhcy/utils": "workspace:*",
         "@turf/turf": "^7.2.0",
         "lodash-es": "^4.17.21",
         "ol": "^10.5.0"
+    },
+    "devDependencies": {
+        "@huaiyinhcy/utils": "workspace:*"
     },
     "author": "huaiyinhcy",
     "repository": "https://github.com/huaiyinhcy/npm-packages",
