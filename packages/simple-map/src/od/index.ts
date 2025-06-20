@@ -5,7 +5,7 @@ import VectorSource from 'ol/source/Vector';
 import type { GetOdLayer } from './types';
 import type { Feature } from 'ol';
 import { borderPreset } from '../presets';
-import { calculateIsoscelesTriangleTopPoint } from '../../../utils/src';
+import { calculateIsoscelesTriangleTopPoint } from '@huaiyinhcy/utils';
 
 export const getOdLayer: GetOdLayer = params => {
     const {
