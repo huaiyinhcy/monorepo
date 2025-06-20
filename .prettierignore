@@ -3,6 +3,6 @@ dist/
 .yaml
 
 
-docs/public/country.json
-docs/public/province.json
-docs/public/city.json
+docs/demos/simple-map/geojson/country.json
+docs/demos/simple-map/geojson/province.json
+docs/demos/simple-map/geojson/city.json

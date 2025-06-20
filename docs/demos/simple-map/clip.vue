@@ -30,8 +30,8 @@ import {
 import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import province from '../../public/province.json';
-import city from '../../public/city.json';
+import province from './geojson/province.json';
+import city from './geojson/city.json';
 import { GeoJSON } from 'ol/format';
 
 const refMap = ref();

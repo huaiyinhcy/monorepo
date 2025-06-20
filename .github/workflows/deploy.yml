@@ -16,9 +16,6 @@ jobs:
             - run: npm i pnpm -g
             - run: pnpm install --frozen-lockfile
 
-            - name: Build
-              run: pnpm build
-
             - name: Build docs
               run: pnpm docs:build
 

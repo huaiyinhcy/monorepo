@@ -7,9 +7,10 @@
         "prettier": "prettier \"**/*.{vue,js,jsx,ts,tsx,json,css,scss,less,md,mdx,yaml,yml,mts,html}\" --write",
         "docs:dev": "pnpm --filter docs docs:dev",
         "docs:build": "pnpm --filter docs docs:build",
+        "build:utils": "pnpm --filter utils build",
         "build:trans-coord": "pnpm --filter trans-coord build",
         "build:simple-map": "pnpm --filter simple-map build",
-        "build": "pnpm build:trans-coord && pnpm build:simple-map"
+        "build": "pnpm build:utils && pnpm build:trans-coord && pnpm build:simple-map"
     },
     "keywords": [],
     "author": "",
