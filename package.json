@@ -1,7 +1,7 @@
 {
     "name": "monorepo",
     "description": "monorepo",
-    "main": "index.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "prettier": "prettier \"**/*.{vue,js,jsx,ts,tsx,json,css,scss,less,md,mdx,yaml,yml,mts,html}\" --write",
