@@ -1,6 +1,6 @@
 import { Style } from 'ol/style';
 import { Map } from 'ol';
-import type { FilterOptionItem } from '../other/types';
+import type { FilterOptionItem } from '../extra/types';
 
 export interface BorderPresets {
     default: (params?: { color?: string; width?: number }) => Style;
