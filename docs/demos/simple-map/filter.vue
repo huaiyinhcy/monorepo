@@ -149,13 +149,13 @@ onMounted(() => {
     init();
     // 加载底图（天地图）
     tdt();
-    // 底图裁切
-    clip();
-    // 立体边界
-    border();
     // 底图滤镜
     filter();
+    // 底图裁切
+    // clip();
+    // 立体边界
+    // border();
     // OD飞线
-    odLayer();
+    // odLayer();
 });
 </script>

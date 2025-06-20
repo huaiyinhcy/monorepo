@@ -2,6 +2,7 @@
     "version": "2.0.1",
     "name": "@huaiyinhcy/trans-coord",
     "description": "支持墨卡托（Mercator）、WGS84、高德（GCJ02）、百度（BD09）之间的坐标转换，无需调用外部接口，可在本地直接执行。",
+    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/trans-coord.html",
     "keywords": [
         "坐标转换",
         "墨卡托",
@@ -9,18 +10,20 @@
         "GCJ02",
         "BD09"
     ],
+    "dependencies": {
+        "@turf/turf": "^7.2.0"
+    },
     "author": "huaiyinhcy",
     "repository": "https://github.com/huaiyinhcy/npm-packages",
-    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/trans-coord.html",
     "private": false,
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
     "type": "module",
-    "main": "dist/index.cjs",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
+    "types": "src/index.ts",
     "files": [
         "dist"
     ],
@@ -28,8 +31,5 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview"
-    },
-    "dependencies": {
-        "@turf/turf": "^7.2.0"
     }
 }

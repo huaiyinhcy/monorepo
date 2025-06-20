@@ -1,6 +1,8 @@
-# OpenLayers方法封装
+# simple-map
 
-OpenLayers 常用方法封装，例如：行政区边界、底图裁切、底图换色、立体边界、od飞线图等。
+## 简介
+
+`simple-map` 是一款基于 `OpenLayers` 的方法封装，可以轻松集成到现有项目。
 
 ## 安装
 
@@ -8,20 +10,22 @@ OpenLayers 常用方法封装，例如：行政区边界、底图裁切、底图
     npm i @huaiyinhcy/simple-map
 ```
 
-## 如何使用
+## 加载底图（天地图）
 
-## useMap 快速使用
+<demo vue="../demos/simple-map/tdt.vue" />
 
-<demo vue="../demos/simple-map/use-map.vue" />
+## 底图滤镜
 
-## od飞线图 与 图例
+<demo vue="../demos/simple-map/filter.vue" />
 
-<demo vue="../demos/simple-map/od-map.vue" />
+## 底图裁切
 
-## 手动实现
+<demo vue="../demos/simple-map/clip.vue" />
 
-- 加载天地图影像底图与影像注记
-- 底图裁切与换色
-- 行政区边界与立体边界
+## 立体边界
 
-<demo vue="../demos/simple-map/index.vue" />
+<demo vue="../demos/simple-map/border.vue" />
+
+## od飞线图
+
+<demo vue="../demos/simple-map/od-layer.vue" />

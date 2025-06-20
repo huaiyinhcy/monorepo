@@ -2,22 +2,29 @@
     "version": "2.0.2",
     "name": "@huaiyinhcy/simple-map",
     "description": "OpenLayers 常用方法封装，例如：行政区边界、底图裁切、底图换色、立体边界、od飞线图等。",
+    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/simple-map.html",
     "keywords": [
         "openlayers",
         "map",
         "gis"
     ],
+    "dependencies": {
+        "@huaiyinhcy/utils": "workspace:*",
+        "@turf/turf": "^7.2.0",
+        "lodash-es": "^4.17.21",
+        "ol": "^10.5.0"
+    },
     "author": "huaiyinhcy",
     "repository": "https://github.com/huaiyinhcy/npm-packages",
-    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/simple-map.html",
     "private": false,
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
     "type": "module",
-    "module": "dist/index.js",
-    "types": "dist/src/index.d.ts",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
+    "types": "src/index.ts",
     "files": [
         "dist"
     ],
@@ -25,10 +32,5 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview"
-    },
-    "dependencies": {
-        "@turf/turf": "^7.2.0",
-        "lodash-es": "^4.17.21",
-        "ol": "^10.5.0"
     }
 }

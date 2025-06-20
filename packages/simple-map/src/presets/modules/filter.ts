@@ -1,4 +1,4 @@
-import type { FilterPresets } from './types';
+import type { FilterPresets } from '../types';
 
 export const filterPresets: FilterPresets = {
     blue: [

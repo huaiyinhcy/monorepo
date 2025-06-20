@@ -4,14 +4,6 @@ import TileLayer from 'ol/layer/Tile';
 import type { ProjectionLike } from 'ol/proj';
 
 /**
- * valid matrix sets
- *
- * w: 球形墨卡托投影
- * c: 经纬度投影
- */
-export type MatrixSet = 'w' | 'c';
-
-/**
  * valid filter types
  *
  * vec: 矢量底图
@@ -32,7 +24,9 @@ export type LayerType = 'vec' | 'cva' | 'img' | 'cia' | 'ter' | 'cta' | 'ibo';
  * @param params
  * @returns WMTSTileGrid
  */
-export type GetTileGrid = (params: { projectionExtent: Extent }) => WMTSTileGrid;
+export type GetTileGrid = (params: {
+    projectionExtent: Extent;
+}) => WMTSTileGrid;
 
 /**
  * get tdt layer function

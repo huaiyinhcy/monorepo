@@ -1,6 +1,7 @@
 import { Stroke, Style } from 'ol/style';
 import { fromLonLat } from 'ol/proj';
-import type { BorderPresets } from './types';
+import type { BorderPresets } from '../types';
+import { defaultColor } from '../index';
 
 const drawParallelogram = ({ ctx, point1, point2, point3, point4 }: any) => {
     ctx.beginPath();
@@ -26,7 +27,7 @@ const drawBorder = ({ ctx, coordinates, offsetX, offsetY }: any) => {
 
 export const borderPreset: BorderPresets = {
     default: (opts = {}) => {
-        const { color = '#909399', width = 1 } = opts;
+        const { color = defaultColor, width = 1 } = opts;
         return new Style({
             stroke: new Stroke({
                 color,
@@ -35,13 +36,17 @@ export const borderPreset: BorderPresets = {
         });
     },
     fake3dBorder: params => {
-        const { map, color = '#909399', offset = [5, 5] } = params;
+        const { map, color = defaultColor, offset = [5, 5] } = params;
         const isMerc = map.getView().getProjection().getCode() === 'EPSG:3857';
         return new Style({
             renderer: (pixelCoordinates, e) => {
                 //偏移单位量为赤道1经度的1/100
-                const a = map.getPixelFromCoordinate(isMerc ? fromLonLat([0, 0]) : [0, 0]);
-                const b = map.getPixelFromCoordinate(isMerc ? fromLonLat([1, 0]) : [1, 0]);
+                const a = map.getPixelFromCoordinate(
+                    isMerc ? fromLonLat([0, 0]) : [0, 0]
+                );
+                const b = map.getPixelFromCoordinate(
+                    isMerc ? fromLonLat([1, 0]) : [1, 0]
+                );
                 const pixelUnit = Math.abs(a[0] - b[0]) / 100;
 
                 const ctx = e.context;

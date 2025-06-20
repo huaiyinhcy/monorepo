@@ -1,4 +1,4 @@
-import type { LegendPresets } from './types';
+import type { LegendPresets } from '../types';
 
 export const legendPresets: LegendPresets = {
     morandi: [

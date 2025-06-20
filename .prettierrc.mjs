@@ -1,5 +1,5 @@
 export default {
-    printWidth: 100, // 每行代码的最大长度
+    printWidth: 80, // 每行代码的最大长度
     tabWidth: 4, // 缩进的空格数
     useTabs: false, // 使用空格而不是制表符
     semi: true, // 语句末尾添加分号

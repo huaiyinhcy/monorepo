@@ -4,15 +4,16 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [dts({ include: ['src'] }), visualizer()],
+    plugins: [dts({ include: ['src'] })],
     build: {
+        // 打包后的文件输出目录
         emptyOutDir: true,
         target: 'es2015',
         lib: {
+            name: 'simple-map',
             entry: 'src/index.ts',
             fileName: 'index',
-            name: 'simpleMap',
-            formats: ['es'],
+            formats: ['umd', 'es', 'cjs'],
         },
         rollupOptions: {
             external: [/^ol($|\/.*)/, /^@turf($|\/.*)/, /^lodash($|\/.*)/],

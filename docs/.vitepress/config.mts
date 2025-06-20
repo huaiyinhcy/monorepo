@@ -11,11 +11,17 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             { text: '首页', link: '/' },
-            { text: '坐标转换', link: '/pages/trans-coord' },
             { text: 'OpenLayers方法封装', link: '/pages/simple-map' },
+            { text: '坐标转换', link: '/pages/trans-coord' },
+            { text: '实用方法', link: '/pages/utils' },
         ],
 
-        socialLinks: [{ icon: 'github', link: 'https://github.com/huaiyinhcy/npm-packages' }],
+        socialLinks: [
+            {
+                icon: 'github',
+                link: 'https://github.com/huaiyinhcy/npm-packages',
+            },
+        ],
     },
     markdown: {
         config(md) {

@@ -1,7 +1,7 @@
 import type { CreateLegend } from './types';
-import { legendPresets } from '../presets/legend';
+import { legendPresets } from '../presets';
 
-export const createGradient = (colors = legendPresets.morandi) => {
+const createGradient = (colors: string[]) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error("Can't create gradient");
@@ -21,7 +21,7 @@ export const createGradient = (colors = legendPresets.morandi) => {
     return canvas;
 };
 
-export const getColorFromGradient = (
+const getColorFromGradient = (
     canvas: HTMLCanvasElement,
     index: number,
     gradingNum: number
@@ -37,7 +37,7 @@ export const getColorFromGradient = (
     return `rgba(${imageData.data[0]}, ${imageData.data[1]}, ${imageData.data[2]}, ${imageData.data[3]})`;
 };
 
-const equalInterval = (data: any, n: number) => {
+const equalInterval = (data: number[], n: number) => {
     const min = Math.min(...data);
     const max = Math.max(...data);
     const interval = (max - min) / n;
@@ -48,7 +48,7 @@ const equalInterval = (data: any, n: number) => {
     return breaks;
 };
 
-const quantile = (data: any, n: number) => {
+const quantile = (data: number[], n: number) => {
     const sortedData = [...data].sort((a, b) => a - b);
     const breaks = [];
     const step = sortedData.length / n;
@@ -59,9 +59,11 @@ const quantile = (data: any, n: number) => {
     return breaks;
 };
 
-const standardDeviation = (data: any, n: number) => {
+const standardDeviation = (data: number[], n: number) => {
     const mean = data.reduce((a: any, b: any) => a + b, 0) / data.length;
-    const variance = data.reduce((a: any, b: any) => a + Math.pow(b - mean, 2), 0) / data.length;
+    const variance =
+        data.reduce((a: any, b: any) => a + Math.pow(b - mean, 2), 0) /
+        data.length;
     const stdDev = Math.sqrt(variance);
 
     const breaks = [];

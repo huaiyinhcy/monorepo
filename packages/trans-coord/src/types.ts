@@ -1,5 +1,3 @@
-export type Proj = 'merc' | 'wgs84' | 'gcj02' | 'bd09';
-
 export interface Merc {
     toWgs84: (lngLat: [number, number]) => [number, number];
     toGcj02: (lngLat: [number, number]) => [number, number];

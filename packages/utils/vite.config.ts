@@ -4,15 +4,15 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [dts({ include: ['src'] }), visualizer()],
+    plugins: [dts({ include: ['src'] })],
     build: {
         // 打包后的文件输出目录
         emptyOutDir: true,
         target: 'es2015',
         lib: {
+            name: 'utils',
             entry: 'src/index.ts',
             fileName: 'index',
-            name: 'utilityMethod',
             formats: ['umd', 'es', 'cjs'],
         },
         rollupOptions: {

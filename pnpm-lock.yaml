@@ -35,9 +35,6 @@ importers:
             vite-plugin-dts:
                 specifier: ^4.5.4
                 version: 4.5.4(rollup@4.41.0)(typescript@5.8.3)(vite@6.3.5(jiti@2.4.2))
-            vitepress:
-                specifier: ^1.6.3
-                version: 1.6.3(@algolia/client-search@5.25.0)(async-validator@4.2.5)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3)
 
     docs:
         dependencies:
@@ -59,13 +56,19 @@ importers:
         devDependencies:
             unocss:
                 specifier: ^66.1.2
-                version: 66.1.2(postcss@8.5.3)(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))
+                version: 66.1.2(postcss@8.5.3)(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))
+            vitepress:
+                specifier: ^1.6.3
+                version: 1.6.3(@algolia/client-search@5.25.0)(async-validator@4.2.5)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3)
             vitepress-demo-plugin:
                 specifier: ^1.4.2
                 version: 1.4.2(shiki@2.5.0)(vitepress@1.6.3(@algolia/client-search@5.25.0)(async-validator@4.2.5)(postcss@8.5.3)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.14(typescript@5.8.3))
 
     packages/simple-map:
         dependencies:
+            '@huaiyinhcy/utils':
+                specifier: workspace:*
+                version: link:../utils
             '@turf/turf':
                 specifier: ^7.2.0
                 version: 7.2.0
@@ -82,14 +85,11 @@ importers:
                 specifier: ^7.2.0
                 version: 7.2.0
 
-    packages/utility-method:
-        devDependencies:
-            typescript:
-                specifier: ~5.8.3
-                version: 5.8.3
-            vite:
-                specifier: ^6.3.5
-                version: 6.3.5(jiti@2.4.2)
+    packages/utils:
+        dependencies:
+            lodash-es:
+                specifier: ^4.17.21
+                version: 4.17.21
 
 packages:
     '@algolia/autocomplete-core@1.17.7':
@@ -5646,13 +5646,13 @@ snapshots:
 
     '@ungap/structured-clone@1.3.0': {}
 
-    '@unocss/astro@66.1.2(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))':
+    '@unocss/astro@66.1.2(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))':
         dependencies:
             '@unocss/core': 66.1.2
             '@unocss/reset': 66.1.2
-            '@unocss/vite': 66.1.2(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))
+            '@unocss/vite': 66.1.2(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))
         optionalDependencies:
-            vite: 6.3.5(jiti@2.4.2)
+            vite: 5.4.19
         transitivePeerDependencies:
             - vue
 
@@ -5783,7 +5783,7 @@ snapshots:
         dependencies:
             '@unocss/core': 66.1.2
 
-    '@unocss/vite@66.1.2(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))':
+    '@unocss/vite@66.1.2(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))':
         dependencies:
             '@ampproject/remapping': 2.3.0
             '@unocss/config': 66.1.2
@@ -5794,7 +5794,7 @@ snapshots:
             pathe: 2.0.3
             tinyglobby: 0.2.13
             unplugin-utils: 0.2.4
-            vite: 6.3.5(jiti@2.4.2)
+            vite: 5.4.19
         transitivePeerDependencies:
             - vue
 
@@ -6768,9 +6768,9 @@ snapshots:
 
     universalify@2.0.1: {}
 
-    unocss@66.1.2(postcss@8.5.3)(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3)):
+    unocss@66.1.2(postcss@8.5.3)(vite@5.4.19)(vue@3.5.14(typescript@5.8.3)):
         dependencies:
-            '@unocss/astro': 66.1.2(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))
+            '@unocss/astro': 66.1.2(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))
             '@unocss/cli': 66.1.2
             '@unocss/core': 66.1.2
             '@unocss/postcss': 66.1.2(postcss@8.5.3)
@@ -6788,9 +6788,9 @@ snapshots:
             '@unocss/transformer-compile-class': 66.1.2
             '@unocss/transformer-directives': 66.1.2
             '@unocss/transformer-variant-group': 66.1.2
-            '@unocss/vite': 66.1.2(vite@6.3.5(jiti@2.4.2))(vue@3.5.14(typescript@5.8.3))
+            '@unocss/vite': 66.1.2(vite@5.4.19)(vue@3.5.14(typescript@5.8.3))
         optionalDependencies:
-            vite: 6.3.5(jiti@2.4.2)
+            vite: 5.4.19
         transitivePeerDependencies:
             - postcss
             - supports-color

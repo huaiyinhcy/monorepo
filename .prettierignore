@@ -3,6 +3,6 @@ dist/
 .yaml
 
 
-country.json
-province.json
-city.json
+docs/public/country.json
+docs/public/province.json
+docs/public/city.json

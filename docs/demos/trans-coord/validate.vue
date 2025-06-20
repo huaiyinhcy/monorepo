@@ -18,13 +18,18 @@
                 <el-button text :icon="Refresh" @click="handeClick" />
             </div>
         </el-descriptions-item>
-        <el-descriptions-item v-for="{ value, label } in otherProjectionList" :label="label">
+        <el-descriptions-item
+            v-for="{ value, label } in otherProjectionList"
+            :label="label"
+        >
             <div v-if="transedCoord" class="flex flex-justify-between gap-sm">
                 {{ transedCoord[value]?.join(',') }}
                 <el-button
                     text
                     :icon="CopyDocument"
-                    @click="() => copyToClipboard(transedCoord[value]?.join(','))"
+                    @click="
+                        () => copyToClipboard(transedCoord[value]?.join(','))
+                    "
                 />
             </div>
         </el-descriptions-item>
@@ -60,7 +65,8 @@ const handeClick = () => {
         const coord = coordinates.value.split(',').map(Number);
         const _ = {};
         otherProjectionList.value.forEach(({ value }) => {
-            _[value] = transCoord[projection.value][`to${upperFirst(value)}`](coord);
+            _[value] =
+                transCoord[projection.value][`to${upperFirst(value)}`](coord);
         });
         transedCoord.value = _;
     } catch (e) {
