@@ -7,8 +7,8 @@ hero:
     text: 简单、重复的代码。
     actions:
         - theme: brand
-          text: Markdown Examples
-          link: /pages/markdown-examples
+          text: 开始使用
+          link: /pages/packages/simple-map
         - theme: alt
           text: API Examples
           link: /pages/api-examples

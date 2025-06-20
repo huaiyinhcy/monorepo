@@ -10,7 +10,7 @@
 
 ## 最小示例
 
-<demo vue="../demos/trans-coord/minimal.vue" />
+<demo vue="../../demos/trans-coord/minimal.vue" />
 
 ## 校验本工具
 
@@ -22,4 +22,4 @@
 
 当前坐标是北京故宫博物馆
 
-<demo vue="../demos/trans-coord/validate.vue" />
+<demo vue="../../demos/trans-coord/validate.vue" />

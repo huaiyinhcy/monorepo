@@ -12,20 +12,20 @@
 
 ## 加载底图（天地图）
 
-<demo vue="../demos/simple-map/tdt.vue" />
+<demo vue="../../demos/simple-map/tdt.vue" />
 
 ## 底图滤镜
 
-<demo vue="../demos/simple-map/filter.vue" />
+<demo vue="../../demos/simple-map/filter.vue" />
 
 ## 底图裁切
 
-<demo vue="../demos/simple-map/clip.vue" />
+<demo vue="../../demos/simple-map/clip.vue" />
 
 ## 立体边界
 
-<demo vue="../demos/simple-map/border.vue" />
+<demo vue="../../demos/simple-map/border.vue" />
 
 ## od飞线图
 
-<demo vue="../demos/simple-map/od-layer.vue" />
+<demo vue="../../demos/simple-map/od-layer.vue" />

@@ -5,23 +5,56 @@ import UnoCSS from 'unocss/vite';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: 'huaiyinhcy',
-    description: '一些实用小工具',
-    base: '/npm-packages/',
+    description: '一些实用工具',
+    base: '/monorepo/',
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             { text: '首页', link: '/' },
-            { text: 'OpenLayers方法封装', link: '/pages/simple-map' },
-            { text: '坐标转换', link: '/pages/trans-coord' },
-            { text: '实用方法', link: '/pages/utils' },
+            {
+                text: '工具包',
+                link: '/pages/packages/simple-map',
+                activeMatch: '/pages/packages/',
+            },
+            // { text: '案例', link: '/pages/examples/gallery' },
         ],
 
         socialLinks: [
             {
                 icon: 'github',
-                link: 'https://github.com/huaiyinhcy/npm-packages',
+                link: 'https://github.com/huaiyinhcy/monorepo',
             },
         ],
+
+        sidebar: {
+            '/pages/packages/': [
+                {
+                    text: '一些实用工具',
+                    items: [
+                        {
+                            text: 'OpenLayers方法封装',
+                            link: '/pages/packages/simple-map',
+                        },
+                        {
+                            text: '坐标转换',
+                            link: '/pages/packages/trans-coord',
+                        },
+                        // { text: '实用方法', link: '/pages/packages/utils' },
+                    ],
+                },
+            ],
+            '/pages/examples/': [
+                {
+                    text: '一些有趣的demo',
+                    items: [
+                        {
+                            text: '展示',
+                            link: '/pages/examples/gallery',
+                        },
+                    ],
+                },
+            ],
+        },
     },
     markdown: {
         config(md) {
