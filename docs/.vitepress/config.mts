@@ -12,11 +12,11 @@ export default defineConfig({
         nav: [
             { text: '首页', link: '/' },
             {
-                text: '工具包',
+                text: '工具集',
                 link: '/pages/packages/simple-map',
                 activeMatch: '/pages/packages/',
             },
-            // { text: '案例', link: '/pages/examples/gallery' },
+            // { text: '示例', link: '/pages/examples/gallery' },
         ],
 
         socialLinks: [
@@ -32,23 +32,23 @@ export default defineConfig({
                     text: '一些实用工具',
                     items: [
                         {
-                            text: 'OpenLayers方法封装',
+                            text: 'simple-map',
                             link: '/pages/packages/simple-map',
                         },
                         {
-                            text: '坐标转换',
+                            text: 'trans-coord',
                             link: '/pages/packages/trans-coord',
                         },
-                        // { text: '实用方法', link: '/pages/packages/utils' },
+                        { text: 'utils', link: '/pages/packages/utils' },
                     ],
                 },
             ],
             '/pages/examples/': [
                 {
-                    text: '一些有趣的demo',
+                    text: '一些有趣的示例',
                     items: [
                         {
-                            text: '展示',
+                            text: '',
                             link: '/pages/examples/gallery',
                         },
                     ],

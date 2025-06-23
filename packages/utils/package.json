@@ -1,14 +1,12 @@
 {
     "version": "0.0.1",
     "name": "@huaiyinhcy/utils",
-    "description": "实用工具集",
-    "homepage": "https://huaiyinhcy.github.io/npm-packages/pages/utils.html",
-    "keywords": [],
+    "homepage": "https://huaiyinhcy.github.io/monorepo/pages/packages/utils.html",
     "dependencies": {
         "lodash-es": "^4.17.21"
     },
     "author": "huaiyinhcy",
-    "repository": "https://github.com/huaiyinhcy/npm-packages",
+    "repository": "https://github.com/huaiyinhcy/monorepo",
     "private": false,
     "publishConfig": {
         "access": "public",

@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-    name: simple-map、trans-coord、utils
-    text: 简单、重复的代码。
+    name: A collection of simple and useful tools
+    text: 简单实用的工具集
     actions:
         - theme: brand
           text: 开始使用
@@ -14,10 +14,10 @@ hero:
           link: /pages/api-examples
 
 features:
-    - title: 坐标转换（trans-coord）
+    - title: simple-map
+      details: simple-map 是一款基于 OpenLayers 的方法封装，例如 加载底图 、 底图滤镜 、 底图裁切 、 立体边界 、 od飞线图 等，可以轻松集成到现有项目，避免重复编码，提高开发效率。
+    - title: trans-coord
       details: 支持墨卡托（Mercator）、WGS84、高德（GCJ02）、百度（BD09）之间的坐标转换，无需调用外部接口，可在本地直接执行。
-    - title: OpenLayers方法封装（simple-map）
-      details: OpenLayers 常用方法封装，例如：行政区边界、底图裁切、底图换色、立体边界、od飞线图等。
-    - title: 实用方法（utils）
-      details: 一些实用的方法，免去重复编写的麻烦。
+    - title: utils（实用方法）
+      details: 一些实用方法的封装，可以轻松集成到现有项目，避免重复编码，提高开发效率。
 ---
