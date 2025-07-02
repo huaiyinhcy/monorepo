@@ -12,11 +12,10 @@ export default defineConfig({
         nav: [
             { text: '首页', link: '/' },
             {
-                text: '工具集',
-                link: '/pages/packages/simple-map',
-                activeMatch: '/pages/packages/',
+                text: 'simple-map',
+                link: '/pages/simple-map',
             },
-            // { text: '示例', link: '/pages/examples/gallery' },
+            { text: 'trans-coord', link: '/pages/trans-coord' },
         ],
 
         socialLinks: [
@@ -25,36 +24,6 @@ export default defineConfig({
                 link: 'https://github.com/huaiyinhcy/monorepo',
             },
         ],
-
-        sidebar: {
-            '/pages/packages/': [
-                {
-                    text: '一些实用工具',
-                    items: [
-                        {
-                            text: 'simple-map',
-                            link: '/pages/packages/simple-map',
-                        },
-                        {
-                            text: 'trans-coord',
-                            link: '/pages/packages/trans-coord',
-                        },
-                        { text: 'utils', link: '/pages/packages/utils' },
-                    ],
-                },
-            ],
-            '/pages/examples/': [
-                {
-                    text: '一些有趣的示例',
-                    items: [
-                        {
-                            text: '',
-                            link: '/pages/examples/gallery',
-                        },
-                    ],
-                },
-            ],
-        },
     },
     markdown: {
         config(md) {
