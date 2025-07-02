@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t}from"./chunks/framework.BBpwGDFv.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"pages/examples/gallery.md","filePath":"pages/examples/gallery.md"}'),r={name:"pages/examples/gallery.md"};function s(l,o,p,c,n,m){return t(),a("div")}const i=e(r,[["render",s]]);export{d as __pageData,i as default};
